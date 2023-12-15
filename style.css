@@ -1,0 +1,56 @@
+/* Подключение внешнего шрифта /
+@font-face {
+    font-family: 'Aguante';
+    src: url(fonts/Aguante-Regular.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px; / Размер шрифта /
+    / font-family: 'Courier New', Courier, monospace; Тип шрифта /
+    / font-weight: 900; Толщина шрифта /
+    / font-style: italic; Курсив /
+    color: crimson; / Цвет шрифта /
+}
+
+p {
+    / Изменение регистра текста /
+    text-transform: capitalize; / Первая буква слова с заглавной /
+    text-transform: uppercase; / Верхний регистр /
+    text-transform: lowercase; / Нижний регистр /
+    text-transform: none; / Без форматирования /
+
+    text-decoration: underline; / Подчеркнутый текст /
+    text-decoration: overline; / Надчеркнутый текст /
+    text-decoration: line-through; / Перечеркнутый текст /
+    text-decoration: underline line-through; / 2 свойства разом /
+    text-decoration: none; / Без форматирования /
+
+    text-shadow: 5px -4px 3px #be1010; / Тень текста /
+
+    text-align: left; / Выравнивание текста слева /
+    text-align: right; / Выравнивание текста справа /
+    text-align: justify; / Выравнивание текста по ширине /
+    text-align: center; / Выравнивание текста по центру /
+
+    text-indent: 40px; / Отступ первой строки в пикселях /
+}
+
+
+div {
+    / background-color: DarkOrange;
+    background-color: #FF8C00; /
+    / background-color: rgb(255, 140, 0); /
+    / background-color: rgba(255, 140, 0, .15); /
+
+    / background-color: #eee; /
+
+    width: 100px; / Ширина /
+    height: 100px; / Высота /
+
+    background-color: red; / Цвет фона /
+    opacity: .4; / Прозрачность */
+}
