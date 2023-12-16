@@ -9,6 +9,64 @@
         <meta charset="UTF-8">
         <title>Мой сайт</title>
         <link rel="stylesheet" href="style.css">
+
+        <script>
+            function registerUser() {
+                var username = document.getElementById('username').value;
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+    
+                // Проверки на корректность данных могут быть добавлены здесь
+    
+                // В данном примере выводим простое оповещение
+                alert('Регистрация успешна!\n\nИмя пользователя: ' + username + '\nEmail: ' + email);
+            }
+        </script>
+        <script>
+            function validateForm() {
+              // Получение значений полей формы
+                var username = document.getElementById('username').value;
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+                var about = document.getElementById('about').value;
+                var music = document.getElementById('music').value;
+                var books = document.getElementById('books').value;
+
+              // Проверка заполненности всех строк
+              var totalFields = 6; // Общее количество строк
+              
+              // Подсчёт заполненных строк
+              var filledFields = 0;
+              if (username !== "") {
+                filledFields++;
+              }
+              if (email !== "") {
+                filledFields++;
+              }
+              if (password !== "") {
+                filledFields++;
+              }
+              if (about !== "") {
+                filledFields++;
+              }
+              if (music !== "") {
+                filledFields++;
+              }
+              if (books !== "") {
+                filledFields++;
+              }
+              
+              // Проверка, заполнено ли более 90% строк
+              if ((filledFields / totalFields) < 0.9) {
+                alert("Пожалуйста, заполните не менее 90% полей!");
+                return false;
+              } else {
+                registerUser();
+              }
+            }
+          </script>
+
+
     </head>
     <body>
         <div>
@@ -78,6 +136,111 @@
                     <li>Вопросы, связанные с порядком использования информации, размещенной на www.rosminzdrav.ru, или условиями настоящего Уведомления, могут быть направлены в Пресс-службу Минздрава России.</li>
                 </ol>
             </p>
+
+            <form id="registrationForm" onsubmit="validateForm(); return false;">
+                <p>
+                    <label for="username">Имя пользователя:</label>
+                    <input type="text" id="username" name="username" required>
+                </p>
+                <p>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </p>
+        
+                <p>
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                </p>
+                
+                <p>
+                    <label for="about">About:</label>
+                    <input type="text" id="about" name="about">
+                </p>
+                
+                <p>
+                    <label for="books">Books:</label>
+                    <input type="text" id="books" name="books">
+                </p>
+                
+                <p>
+                    <label for="music">Music:</label>
+                    <input type="text" id="music" name="music">
+                </p>
+                <p>
+                    <button type="submit">Зарегистрироваться</button>
+                </p>
+            </form>
+        
+            <form>
+                <br>        
+                <p>1. Как вы обычно реагируете на стрессовые ситуации?</p>
+                <br>        
+                <select name="question1">
+                   <option value="option1">Паника и беспокойство</option>
+                   <option value="option2">Попытка найти решение</option>
+                   <option value="option3">Поиск поддержки у других людей</option>
+                   <option value="option4">Отрицание и уход от проблемы</option>
+                   <option value="option5">Другое</option>
+                </select>
+                <br>        
+                <p>2. Какие виды деятельности вас успокаивают?</p>
+                <br>        <input type="checkbox" name="question2" value="option1"> Чтение<br>        <input type="checkbox" name="question2" value="option2"> Медитация<br>        <input type="checkbox" name="question2" value="option3"> Физическая активность<br>        <input type="checkbox" name="question2" value="option4"> Творческая работа<br>        <input type="checkbox" name="question2" value="option5"> Общение с друзьями<br>        <br><br><br>        
+                <p>3. Как часто вы ощущаете эмоциональное истощение?</p>
+                <br>        
+                <input type="radio" name="question3" value="option1"> Практически каждый день<br>        
+                <input type="radio" name="question3" value="option2"> Несколько раз в неделю<br>        
+                <input type="radio" name="question3" value="option3"> Редко<br>        
+                <input type="radio" name="question3" value="option4"> Никогда<br>        <br><br><br>        
+                <button type="submit">Получить результаты</button><br>    
+             </form>
+            <h1>Калькулятор</h1>
+            <br>    
+            <form onsubmit="calculate(event)">
+                <br>        <input type="number" id="num1" required=""><br>        
+                <select id="operation" required="">
+                    <option value="add">+</option>
+                    <option value="subtract">-</option>
+                    <option value="multiply">*</option>
+                    <option value="divide">/</option>
+                </select>
+                <br>        <input type="number" id="num2" required=""><br>        <button type="submit">Вычислить</button><br>    
+            </form>
+            <br>    
+            <p id="result"></p>
+            <br><br>    
+            <script > function calculate(event) {
+             event.preventDefault();
+                    const num1 = parseFloat(document.getElementById('num1').value);
+                    const num2 = parseFloat(document.getElementById('num2').value);
+                    const operation = document.getElementById('operation').value;
+                    let result;
+                    if (isNaN(num1) || isNaN(num2)) {
+                     alert('Введите корректные числа');
+                    } else {
+                    
+                            switch (operation) {
+                            
+                                    case 'add': result = num1 + num2;
+                                    break;
+                                    case 'subtract': result = num1 - num2;
+                                    break;
+                                    case 'multiply': result = num1 * num2;
+                                    break;
+                                    case 'divide':
+                                    if (num2 === 0) {
+                                     alert('Деление на ноль недопустимо');
+                                    } else {
+                                     result = num1 / num2;
+                                            if (!isFinite(result)) {
+                                             alert('Результат является бесконечностью')
+                                            }
+                                    }
+                                    break;
+                                    default: alert('Выберите операцию');
+                            } document.getElementById('result').textContent = `Результат: ${result}`;
+                    }
+            } </script><br><br>
+
         </div>
     </body>
 </html>
