@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #catgif {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <br>    
+    <title>Чередующиеся рисунки</title>
+    <br>    
+    <br><br>
+    <img id="catgif" src="img/catgif.gif" alt="гифка">
+    <img id="catgif" src="img/catgif.gif" alt="гифка">
+    <img id="catgif" src="img/catgif.gif" alt="гифка">
+    <img id="catgif" src="img/catgif.gif" alt="гифка">
+    <img id="catgif" src="img/catgif.gif" alt="гифка">
+    <img id="catgif" src="img/catgif.gif" alt="гифка">
+    <br>    
+    <h1>Чередующиеся рисунки</h1>
+    <br>    
+    <div class="image-container">
+        <br>
+        <img id="image1" src="img/image1.jpeg" alt="Рисунок 1">
+        <br>
+        <img id="image2" src="img/image2.jpeg" alt="Рисунок 2">
+        <br>
+        <img id="image3" src="img/image3.jpeg" alt="Рисунок 3">
+        <br>
+        <script>
+            let counter = 1;
+    
+            const images = document.querySelectorAll('.image-container img');
+            setInterval(() => {
+                images.forEach(img => img.style.display = 'none');
+                images[counter % images.length].style.display = 'block';
+                counter++;
+            }, 3000);
+    
+            const imageContainer = document.querySelector('.image-container');
+            imageContainer.addEventListener("mouseenter", () => {
+                images[0].style.display = 'block';
+                images[1].style.display = 'none';
+            });
+            imageContainer.addEventListener("mouseleave", () => {
+                images[1].style.display = 'none';
+                images[2].style.display = 'block';
+                setTimeout(() => {
+                    images[2].style.display = 'none';
+                    images[0].style.display = 'block';
+                }, 3000);
+            });
+        </script>    
+    </div>   
+    <br><br><br><br>В данном коде создается контейнер с тремя картинками, которые чередуются в бесконечном цикле. При наведении мыши на контейнер, показывается 1-ая картинка, затем при отведении мыши, показывается 3-я картинка, которая через 3 секунды сменяется на 1-ую.
+</body>
+</html>
