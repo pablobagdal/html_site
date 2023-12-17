@@ -1,0 +1,30 @@
+
+      
+<style>
+    .menu {
+            display: none;
+    }
+    </style>
+    <button onclick="toggleMenu()">Показать меню</button>  
+<ul class="menu" id="menu">
+        
+    <li><a href="#">Пункт 1</a></li>
+        
+    <li><a href="#">Пункт 2</a></li>
+        
+    <li><a href="#">Пункт 3</a></li>
+        
+</ul>
+<script>
+    var menuVisible = false;
+
+    function toggleMenu() {
+            if (menuVisible) {
+            document.getElementById('menu').style.display = 'none';
+        menuVisible = false;
+    } else {
+            document.getElementById('menu').style.display = 'block';
+        menuVisible = true;
+    }
+}
+</script>
