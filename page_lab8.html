@@ -41,19 +41,21 @@
                 images[counter % images.length].style.display = 'block';
                 counter++;
             }, 3000);
+
+            document.getElementById("slideshow").onmouseover = stop;
     
             const imageContainer = document.querySelector('.image-container');
             imageContainer.addEventListener("mouseenter", () => {
-                images[0].style.display = 'block';
                 images[1].style.display = 'none';
+                images[0].style.display = 'block';
             });
             imageContainer.addEventListener("mouseleave", () => {
                 images[1].style.display = 'none';
                 images[2].style.display = 'block';
-                setTimeout(() => {
-                    images[2].style.display = 'none';
-                    images[0].style.display = 'block';
-                }, 3000);
+                // setTimeout(() => {
+                //     images[2].style.display = 'none';
+                //     images[0].style.display = 'block';
+                // }, 3000);
             });
         </script>    
     </div>   

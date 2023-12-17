@@ -37,6 +37,7 @@
               
               // Подсчёт заполненных строк
               var filledFields = 0;
+
               if (username !== "") {
                 filledFields++;
               }
@@ -99,26 +100,77 @@
             <p>
                 <a href="https://digital.gov.ru/">Сайт минцифры</a>
             </p>
-            <p>Lorem ipsum dolor <span class="sp1">sit</span> amet consectetur adipisicing elit. <mark>Explicabo eos voluptatibus</mark> assumenda libero iste natus autem in, aspernatur minima id pariatur, laboriosam consectetur ullam, fugiat hic! Vel similique voluptate reprehenderit?</p>
+            <p>
+                <a href="page_lab8.html">Страница с котами</a>
+            </p>
+            <p>Lorem ipsum dolor <span class="sp1">sit</span> amet consectetur adipisicing elit. <mark>Explicabo eos voluptatibus</mark> assumenda libero iste natus autem in, aspernatur minima id pariatur, laboriosam consectetur ullam, fugiat hic! Vel similique voluptate reprehenderit?</p>  
+            
+            <h1>Калькулятор</h1>
             <table>
-                <!-- tr - table row - строка -->
-                <tr>
-                    <!-- td - table data - это уже отдельные данные, ячейка -->
-                    <td rowspan="2" style="background-color: green;">1</td>
-                    <td class="bad">2</td>
-                    <td>3</td>
-                </tr>
-    
-                <tr>
-                    <td>4</td>
-                    <td>5</td>
-                </tr>
-    
-                <tr>
-                    <td>6</td>
-                    <td colspan="2" style="background-color: brown;">7</td>
-                </tr>
-            </table>
+                <tbody>
+                   <tr>
+                      <th colspan="2">Калькулятор</th>
+                   </tr>
+                   <tr>
+                      <td colspan="2"><input type="text" id="result" disabled=""></td>
+                   </tr>
+                   <tr>
+                      <td><button onclick="addToResult(7)">7</button></td>
+                      <td><button onclick="addToResult(8)">8</button></td>
+                   </tr>
+                   <tr>
+                      <td><button onclick="addToResult(4)">4</button></td>
+                      <td><button onclick="addToResult(5)">5</button></td>
+                   </tr>
+                   <tr>
+                      <td><button onclick="addToResult(1)">1</button></td>
+                      <td><button onclick="addToResult(2)">2</button></td>
+                   </tr>
+                   <tr>
+                      <td><button onclick="addToResult(0)">0</button></td>
+                      <td><button onclick="clearResult()">C</button></td>
+                   </tr>
+                   <tr>
+                      <td><button onclick="calculateResult('+')">+</button></td>
+                      <td><button onclick="calculateResult('-')">-</button></td>
+                   </tr>
+                   <tr>
+                      <td><button onclick="calculateResult('*')">*</button></td>
+                      <td><button onclick="calculateResult('/')">/</button></td>
+                   </tr>
+                   <tr>
+                      <td colspan="2"><button onclick="evaluateResult()">=</button></td>
+                   </tr>
+                </tbody>
+             </table>
+             <script>
+                function addToResult(value) {
+                      document.getElementById("result").value += value;
+                }
+                    function clearResult() {
+                        document.getElementById("result").value = "";
+                }
+                    function calculateResult(operator) {
+                        let currentResult = document.getElementById("result").value;
+                    if (currentResult !== "" && !isNaN(currentResult.charAt(currentResult.length - 1))) {
+                            document.getElementById("result").value += operator;
+                }
+                }
+                    function evaluateResult() {
+                        let currentResult = document.getElementById("result").value;
+                        let result;
+                        try {
+                                result = eval(currentResult);
+                                if (!isFinite(result)) {
+                                throw "Ошибка: деление на ноль";
+                        }
+                            document.getElementById("result").value = result;
+                        } catch (error) {
+                                    document.getElementById("result").value = error;
+                        }
+                    }
+              </script>
+            
             <p>
                 <h2>Условия использования сайта</h2>
                 <p>Материал опубликован 29 мая 2014 в 13:19.</p>    
@@ -171,7 +223,7 @@
                 </p>
             </form>
         
-            <form>
+            <form name="psychologicalTestForm" data-gtm-form-interact-id="0">
                 <br>        
                 <p>1. Как вы обычно реагируете на стрессовые ситуации?</p>
                 <br>        
@@ -184,62 +236,82 @@
                 </select>
                 <br>        
                 <p>2. Какие виды деятельности вас успокаивают?</p>
-                <br>        <input type="checkbox" name="question2" value="option1"> Чтение<br>        <input type="checkbox" name="question2" value="option2"> Медитация<br>        <input type="checkbox" name="question2" value="option3"> Физическая активность<br>        <input type="checkbox" name="question2" value="option4"> Творческая работа<br>        <input type="checkbox" name="question2" value="option5"> Общение с друзьями<br>        <br><br><br>        
+                <br>        
+                <input type="checkbox" name="question2" value="option1"> Чтение<br>        
+                <input type="checkbox" name="question2" value="option2"> Медитация<br>        
+                <input type="checkbox" name="question2" value="option3"> Физическая активность<br>       
+                 <input type="checkbox" name="question2" value="option4"> Творческая работа<br>       
+                  <input type="checkbox" name="question2" value="option5"> Общение с друзьями<br>        
+                  <br><br><br>        
                 <p>3. Как часто вы ощущаете эмоциональное истощение?</p>
                 <br>        
                 <input type="radio" name="question3" value="option1"> Практически каждый день<br>        
                 <input type="radio" name="question3" value="option2"> Несколько раз в неделю<br>        
                 <input type="radio" name="question3" value="option3"> Редко<br>        
                 <input type="radio" name="question3" value="option4"> Никогда<br>        <br><br><br>        
-                <button type="submit">Получить результаты</button><br>    
-             </form>
-            <h1>Калькулятор</h1>
-            <br>    
-            <form onsubmit="calculate(event)">
-                <br>        <input type="number" id="num1" required=""><br>        
-                <select id="operation" required="">
-                    <option value="add">+</option>
-                    <option value="subtract">-</option>
-                    <option value="multiply">*</option>
-                    <option value="divide">/</option>
-                </select>
-                <br>        <input type="number" id="num2" required=""><br>        <button type="submit">Вычислить</button><br>    
-            </form>
-            <br>    
-            <p id="result"></p>
-            <br><br>    
-            <script > function calculate(event) {
-             event.preventDefault();
-                    const num1 = parseFloat(document.getElementById('num1').value);
-                    const num2 = parseFloat(document.getElementById('num2').value);
-                    const operation = document.getElementById('operation').value;
-                    let result;
-                    if (isNaN(num1) || isNaN(num2)) {
-                     alert('Введите корректные числа');
-                    } else {
-                    
-                            switch (operation) {
-                            
-                                    case 'add': result = num1 + num2;
-                                    break;
-                                    case 'subtract': result = num1 - num2;
-                                    break;
-                                    case 'multiply': result = num1 * num2;
-                                    break;
-                                    case 'divide':
-                                    if (num2 === 0) {
-                                     alert('Деление на ноль недопустимо');
-                                    } else {
-                                     result = num1 / num2;
-                                            if (!isFinite(result)) {
-                                             alert('Результат является бесконечностью')
-                                            }
-                                    }
-                                    break;
-                                    default: alert('Выберите операцию');
-                            } document.getElementById('result').textContent = `Результат: ${result}`;
+                <button type="submit" onclick="showResult()">Получить результаты</button><br> 
+                <script>
+                    // function testResult() {
+                    //     var question1 = document.getElementById('question1').value;
+                    //     var question2 = document.getElementById('question2').value;
+                    //     var question3 = document.getElementById('question3').value;
+              
+                    //     var totalpoints = 0
+
+                    //     if (question1.value == "option1") {
+                    //         totalpoints += 5
+                    //     } else if (question1.value == "option2") {
+                    //         totalpoints += 4
+                    //     } else if (question1.value == "option3") {
+                    //         totalpoints += 3
+                    //     } else if (question1.value == "option4") {
+                    //         totalpoints += 2
+                    //     } else {
+                    //         totalpoints += 1
+                    //     }
+
+                    //     if (question2.value == "option1") {
+                    //         totalpoints += 5
+                    //     } else if (question2.value == "option2") {
+                    //         totalpoints += 4
+                    //     } else if (question2.value == "option3") {
+                    //         totalpoints += 3
+                    //     } else if (question2.value == "option4") {
+                    //         totalpoints += 2
+                    //     } else {
+                    //         totalpoints += 1
+                    //     }
+
+                    //     if (question3.value == "option1") {
+                    //         totalpoints += 5
+                    //     } else if (question3.value == "option2") {
+                    //         totalpoints += 4
+                    //     } else if (question3.value == "option3") {
+                    //         totalpoints += 3
+                    //     } else {
+                    //         totalpoints += 1
+                    //     }
+             
+                    //     alert("Ваш рейтинг уровня тревожности определён как ", totalpoints);
+                    // }
+                    function showResult() {
+                        var result = "";
+                        var form = document.forms["psychologicalTestForm"];
+                        for (var i = 0; i < form.elements.length; i++) {
+
+                                if (form.elements[i].type === "select-one") {
+                                    result += "Answer " + (i + 1) + ": " + form.elements[i].value + "\n";
+                                }
+                        }
+                        alert(result);
                     }
-            } </script><br><br>
+                </script>   
+             </form>
+
+
+            
+            <br>
+            <br>
 
         </div>
     </body>
