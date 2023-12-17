@@ -312,6 +312,70 @@
             
             <br>
             <br>
+            <style>
+                .slider {
+                        width: 400px;
+                        height: 300px;
+                        overflow: hidden;
+                        position: relative;
+                }
+            
+                .slides {
+                        display: flex;
+                        transition: transform 0.5s ease;
+                }
+            
+                .slide {
+                        flex: 0 0 100%;
+                        max-width: 100%;
+                }
+                </style>
+            <br><br>
+            <div class="slider">
+                    
+                <div class="slides">
+                        
+                    <div class="slide"><img src="img/image1.jpeg" alt="Slide 1"></div>
+                        
+                    <div class="slide"><img src="img/image2.jpeg" alt="Slide 2"></div>
+                        
+                    <div class="slide"><img src="img/image3.jpeg" alt="Slide 3"></div>
+                    
+                </div>
+                
+            </div>
+            <br>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js">    </script>
+            <script>
+                $(document).ready(function() {
+                        var slideCount = $('.slide').length;
+                    var currentIndex = 0;
+            
+                    function goToSlide(index) {
+                        if (index < 0) {
+                            index = slideCount - 1;
+                        } else if (index >= slideCount) {
+                                index = 0;
+                        }
+            
+                        var transformValue = -100 * index + "%";
+                        $('.slides').css('transform', 'translateX(' + transformValue + ')');
+                        currentIndex = index;
+                    }
+            
+                    setInterval(function() {
+                        goToSlide(currentIndex + 1);
+                    }, 2000);
+            
+                    $('.slider').hover(function() {
+                        clearInterval(interval);
+                    }, function() {
+                        interval = setInterval(function() {
+                            goToSlide(currentIndex + 1);
+                        }, 2000);
+                    });
+                });
+            </script>
 
         </div>
     </body>
