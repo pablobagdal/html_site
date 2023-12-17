@@ -23,42 +23,53 @@
     <img id="catgif" src="img/catgif.gif" alt="гифка">
     <br>    
     <h1>Чередующиеся рисунки</h1>
-    <br>    
-    <div class="image-container">
-        <br>
-        <img id="image1" src="img/image1.jpeg" alt="Рисунок 1">
-        <br>
-        <img id="image2" src="img/image2.jpeg" alt="Рисунок 2">
-        <br>
-        <img id="image3" src="img/image3.jpeg" alt="Рисунок 3">
-        <br>
-        <script>
-            let counter = 1;
     
-            const images = document.querySelectorAll('.image-container img');
-            setInterval(() => {
-                images.forEach(img => img.style.display = 'none');
-                images[counter % images.length].style.display = 'block';
-                counter++;
-            }, 3000);
-
-            document.getElementById("slideshow").onmouseover = stop;
-    
-            const imageContainer = document.querySelector('.image-container');
-            imageContainer.addEventListener("mouseenter", () => {
-                images[1].style.display = 'none';
-                images[0].style.display = 'block';
-            });
-            imageContainer.addEventListener("mouseleave", () => {
-                images[1].style.display = 'none';
-                images[2].style.display = 'block';
-                // setTimeout(() => {
-                //     images[2].style.display = 'none';
-                //     images[0].style.display = 'block';
-                // }, 3000);
-            });
-        </script>    
-    </div>   
+    <style>  
+        .image-container {      
+            position: relative;      
+            width: 200px;
+            height: 200px;
+            overflow: hidden;  }  
+            
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;  }
+        </style>
+        
+        <div class="image-container" onmouseover="stopInterval()" onmouseleave="startInterval()">
+            <img src="img/image1.jpeg" id="image1">
+            <img src="img/image2.jpeg" id="image2">
+            <img src="img/image3.jpeg" id="image3">
+        </div>
+        
+        <script>  
+            var images = ["img/image1.jpeg", "img/image2.jpeg", "img/image3.jpeg"];
+            var currentIndex = 0;
+            var interval;
+        
+            function startInterval() {
+                interval = setInterval(changeImage, 1000);
+            }
+            
+            function stopInterval() {
+                while (currentIndex != 0) {
+                    changeImage()
+                }
+                clearInterval(interval);
+            }
+        
+            function changeImage() {
+                document.getElementById("image1").src = images[currentIndex];
+                document.getElementById("image2").src = images[(currentIndex + 1) % 3];
+                document.getElementById("image3").src = images[(currentIndex + 2) % 3];
+                currentIndex = (currentIndex + 1) % 3;
+            }
+            startInterval();
+        </script>
+      
     <br><br><br><br>В данном коде создается контейнер с тремя картинками, которые чередуются в бесконечном цикле. При наведении мыши на контейнер, показывается 1-ая картинка, затем при отведении мыши, показывается 3-я картинка, которая через 3 секунды сменяется на 1-ую.
 </body>
 </html>
